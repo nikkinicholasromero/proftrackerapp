@@ -1,13 +1,10 @@
 package ph.com.demo.proftrackerapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by nikkiromero on 22/03/2017.
@@ -17,18 +14,12 @@ public class Professor {
     @Id
     @JsonIgnore
     private String _id;
-    private String professorId;
     private String firstName;
     private String middleName;
     private String lastName;
-    private LocalDate birthDate;
-    @JsonIgnore
-    private boolean deleted;
-    @JsonIgnore
-    private LocalDateTime dateCreated;
-    @JsonIgnore
-    private LocalDateTime dateModified;
-    private long revisionNumber;
+    private String profilePictureUrl;
+    private String department;
+    private List<Schedule> schedules;
 
     public String get_id() {
         return _id;
@@ -36,14 +27,6 @@ public class Professor {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public String getProfessorId() {
-        return professorId;
-    }
-
-    public void setProfessorId(String professorId) {
-        this.professorId = professorId;
     }
 
     public String getFirstName() {
@@ -70,97 +53,40 @@ public class Professor {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public String getProfilePictureUrl() {
+        return profilePictureUrl;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setProfilePictureUrl(String profilePictureUrl) {
+        this.profilePictureUrl = profilePictureUrl;
     }
 
-    public boolean isDeleted() {
-        return deleted;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
+    public List<Schedule> getSchedules() {
+        return schedules;
     }
 
-    public void setDateCreated(LocalDateTime dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public LocalDateTime getDateModified() {
-        return dateModified;
-    }
-
-    public void setDateModified(LocalDateTime dateModified) {
-        this.dateModified = dateModified;
-    }
-
-    public long getRevisionNumber() {
-        return revisionNumber;
-    }
-
-    public void setRevisionNumber(long revisionNumber) {
-        this.revisionNumber = revisionNumber;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Professor professor = (Professor) o;
-
-        return new EqualsBuilder()
-                .append(deleted, professor.deleted)
-                .append(revisionNumber, professor.revisionNumber)
-                .append(_id, professor._id)
-                .append(professorId, professor.professorId)
-                .append(firstName, professor.firstName)
-                .append(middleName, professor.middleName)
-                .append(lastName, professor.lastName)
-                .append(birthDate, professor.birthDate)
-                .append(dateCreated, professor.dateCreated)
-                .append(dateModified, professor.dateModified)
-                .isEquals();
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-                .append(_id)
-                .append(professorId)
-                .append(firstName)
-                .append(middleName)
-                .append(lastName)
-                .append(birthDate)
-                .append(deleted)
-                .append(dateCreated)
-                .append(dateModified)
-                .append(revisionNumber)
-                .toHashCode();
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
     }
 
     @Override
     public String toString() {
         return "Professor{" +
                 "_id='" + _id + '\'' +
-                ", professorId='" + professorId + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
-                ", deleted=" + deleted +
-                ", dateCreated=" + dateCreated +
-                ", dateModified=" + dateModified +
-                ", revisionNumber=" + revisionNumber +
+                ", profilePictureUrl='" + profilePictureUrl + '\'' +
+                ", department='" + department + '\'' +
+                ", schedules=" + schedules +
                 '}';
     }
 }
