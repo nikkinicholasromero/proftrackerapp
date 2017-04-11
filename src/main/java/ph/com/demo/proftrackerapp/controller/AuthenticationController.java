@@ -22,7 +22,7 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @RequestMapping(value = "/login")
-    public StandardResponse<?> login(@RequestBody User user) {
+    public StandardResponse login(@RequestBody User user) {
         boolean isUserValid = authenticationService.isUserValid(user);
 
         StandardResponse standardResponse = new StandardResponse();
